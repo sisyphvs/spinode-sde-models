@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datos y resultados generados
+experiments/*/data/
+experiments/*/results/
+*.npz
+*.npy
+
+# Otros
+*.log
