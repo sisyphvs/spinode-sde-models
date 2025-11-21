@@ -1,5 +1,5 @@
----
 # About this project
+
 ## Physics–Informed Neural SDEs: Implementation of GBM and Heston
 
 ## Based on the Stochastic Physics-Informed Neural ODEs methodology (O’Leary, Paulson & Mesbah, 2023)
@@ -64,7 +64,6 @@ Learning the stochastic component (the diffusion) using the residual increments 
 
 This decomposition is valid only when the SDE admits a representation of the form:
 
-
 $$
 \begin{aligned}
 dX_t &= f(X_t,t)\,dt + g(X_t,t)\,dW_t
@@ -74,15 +73,14 @@ $$
 and when an explicit Euler–Maruyama simulator is available so that the drift and diffusion components can be separated from synthetic data.
 
 ### 5. Implemented Models
-5.1 Geometric Brownian Motion (GBM)
 
+5.1 Geometric Brownian Motion (GBM)
 
 $$
 \begin{aligned}
 dS_t &= \mu S_t dt + \sigma S_t dW_t
 \end{aligned}
 $$
-
 
 Relevant characteristics:
 
@@ -121,42 +119,40 @@ Tests the framework’s ability to learn coupled stochastic dynamics.
 ### 6. Code Architecture
 
 The repository is structured as follows:
-   ```bash
-     SPINODE_extended/
-  ├── src/
-  │   ├── dynamics.py          # CSA/LVE/SIR + BS + Heston
-  │   ├── train.py             # funciones genéricas de entrenamiento g1/g2
-  │   ├── reconstruct.py       # reconstruct_CSA + reconstruct_LVE/BS/Heston
-  │   ├── utils.py
-  │   └── __init__.py          # opcional, si quieres tratarlo como paquete
-  │
-  ├── experiments/
-  │   ├── LVE/
-  │   │   ├── run_LVE.ipynb
-  │   │   ├── generate_LVE_data.ipynb
-  │   │   ├── LVE_data.ipynb
-  │   │   ├── data/            # .npy, .npz, etc. (ignorados en git si son pesados)
-  │   │   └── results/         # figuras, rmse, etc.
-  │   ├── BS/
-  │   │   ├── run_BS.ipynb
-  │   │   ├── generate_BS_data.ipynb
-  │   │   ├── BS_data.ipynb
-  │   │   ├── data/
-  │   │   └── results/
-  │   └── Heston/
-  │       ├── run_Heston.ipynb
-  │       ├── generate_Heston_data.ipynb
-  │       ├── Heston_data.ipynb
-  │       ├── data/
-  │       └── results/
-  │
-  ├── notebooks/               # (opcional) notebooks más generales, p.ej. run.ipynb
-  │   └── run_all_models.ipynb
-  │
-  ├── README.md
-  ├── requirements.txt / env.yml
-  └── .gitignore
-   ```
+
+```bash
+  SPINODE_extended/
+├── src/
+│   ├── dynamics.py          # CSA/LVE/SIR + BS + Heston
+│   ├── train.py             # funciones genéricas de entrenamiento g1/g2
+│   ├── reconstruct.py       # reconstruct_CSA + reconstruct_LVE/BS/Heston
+│   ├── utils.py
+│   └── __init__.py          # opcional, si quieres tratarlo como paquete
+│
+├── experiments/
+│   ├── LVE/
+│   │   ├── run_LVE.ipynb
+│   │   ├── generate_LVE_data.ipynb
+│   │   ├── LVE_data.ipynb
+│   │   ├── data/            # .npy, .npz, etc. (ignorados en git si son pesados)
+│   │   └── results/         # figuras, rmse, etc.
+│   ├── BS/
+│   │   ├── run_BS.ipynb
+│   │   ├── generate_BS_data.ipynb
+│   │   ├── BS_data.ipynb
+│   │   ├── data/
+│   │   └── results/
+│   └── Heston/
+│       ├── run_Heston.ipynb
+│       ├── generate_Heston_data.ipynb
+│       ├── Heston_data.ipynb
+│       ├── data/
+│       └── results/
+│
+├── README.md
+├── requirements.txt / env.yml
+└── .gitignore
+```
 
 #### 6.1 train_g1
 
@@ -174,16 +170,16 @@ With the drift already learned, the module estimates the noise structure, recove
 
 $$
 \begin{aligned}
-\widehat{g}_{\phi}(x,t) &\approx 
+\widehat{g}_{\phi}(x,t) &\approx
 \frac{X_{t+\Delta t}-X_t-\widehat{f}_{\theta}(x,t)\,\Delta t}{\sqrt{\Delta t}}
 \end{aligned}
 $$
 
 ### 7. Expected Results
 
-In GBM, the method recovers parameters close to the true 
+In GBM, the method recovers parameters close to the true
 𝜇
-μ and 
+μ and
 𝜎
 σ.
 
@@ -208,15 +204,14 @@ The system exhibits degenerate diffusion that cannot be extracted from finite-di
 This project draws upon and integrates ideas from the following works:
 
 - **O'Leary, J., Paulson, J.A., & Mesbah, A. (2023).**  
-  *Stochastic Physics-Informed Neural Ordinary Differential Equations.*  
+  _Stochastic Physics-Informed Neural Ordinary Differential Equations._  
   University of California, Berkeley / The Ohio State University.
 
 - **El Janati Elidrissi, Y., & Efstathiadis, G. (2023).**  
-  *PINN-Based SDE Solver.*  
+  _PINN-Based SDE Solver._  
   Harvard T.H. Chan School of Public Health.
 
 - **Olguín, D. (2024).**  
-  *The Math Behind the Magic: Neural Networks, Theory and Practice.*  
+  _The Math Behind the Magic: Neural Networks, Theory and Practice._  
   Encuentro Nacional de Ingeniería Matemática 2024,  
   with J. Fontbona, J. Maass, and C. Muñoz.
-
