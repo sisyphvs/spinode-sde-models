@@ -4,6 +4,8 @@ import sys
 sys.dont_write_bytecode = True
 
 # Import required packages and core code
+
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import random
@@ -12,8 +14,16 @@ import torch
 from torchdiffeq import odeint_adjoint as odeint
 #from torchdiffeq import odeint
 
-import dynamics
-from utils import standardize, un_standardize, find_mu_std, get_sigma
+# Ruta al directorio raíz del repo (dos niveles hacia arriba desde experiments/BS)
+repo_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+
+# Agregar el root al sys.path si no está
+if repo_root not in sys.path:
+    sys.path.append(repo_root)
+
+import src.dynamics as dynamics
+
+from src.utils import standardize, un_standardize, find_mu_std, get_sigma
 ###############################################################################
 
 ###############################################################################
@@ -1152,7 +1162,7 @@ def reconstruct_LVE(hp,
     np.save(f"{path}/rmse_{hp}_LVE.npy", rmse)
 
     # Optional visualization
-    import matplotlib.pyplot as plt
+    # import matplotlib.pyplot as plt
     for k in range(nx):
         plt.figure()
         plt.contourf(x, y, g_pred[:, :, k], levels=50, alpha=0.7)
@@ -1191,9 +1201,9 @@ def reconstruct_BS(hp,
     path --> output path (e.g., "BS/Results/")
     """
 
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import dynamics
+    # import matplotlib.pyplot as plt
+    # import numpy as np
+    # import src.dynamics as dynamics
 
     # Define state space
     S_min, S_max = 10, 200
@@ -1253,9 +1263,9 @@ def reconstruct_Heston(hp, model, device, sigma_mu, sigma_std, nx, nu, dt, path)
     """
     Reconstructs drift (g1) or diffusion (g2) for the Heston model.
     """
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import dynamics
+    #import matplotlib.pyplot as plt
+    #import numpy as np
+    #import dynamics
 
     numS, numV = 100, 100
     S_vals = np.linspace(50, 150, numS)
