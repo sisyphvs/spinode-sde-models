@@ -76,9 +76,13 @@ and when an explicit Euler–Maruyama simulator is available so that the drift a
 ### 5. Implemented Models
 5.1 Geometric Brownian Motion (GBM)
 
-```math
+
+$$
+\begin{aligned}
 dS_t &= \mu S_t dt + \sigma S_t dW_t
-```
+\end{aligned}
+$$
+
 
 Relevant characteristics:
 
