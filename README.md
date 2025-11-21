@@ -76,11 +76,9 @@ and when an explicit Euler–Maruyama simulator is available so that the drift a
 ### 5. Implemented Models
 5.1 Geometric Brownian Motion (GBM)
 
-$$
-\begin{aligned}
+```math
 dS_t &= \mu S_t dt + \sigma S_t dW_t
-\end{aligned}
-$$​
+```
 
 Relevant characteristics:
 
@@ -217,3 +215,4 @@ This project draws upon and integrates ideas from the following works:
   *The Math Behind the Magic: Neural Networks, Theory and Practice.*  
   Encuentro Nacional de Ingeniería Matemática 2024,  
   with J. Fontbona, J. Maass, and C. Muñoz.
+
